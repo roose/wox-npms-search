@@ -1,7 +1,7 @@
 wox npm search
 ==================
 
-[Wox](https://github.com/Wox-launcher/Wox) plugin for npm packages with [npms.io](https://npms.io) plugin
+[Wox](https://github.com/Wox-launcher/Wox) plugin to search for npm packages with [npms.io](https://npms.io)
 
 **Warning:** Works only with Wox > 1.3.0
 
