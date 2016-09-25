@@ -1,0 +1,14 @@
+{
+    "ID": "23E2F80280AA47D6A783DFEF5C0BF36C",
+    "ActionKeywords": [
+        "npm"
+    ],
+    "Name": "npms search",
+    "Description": "Search for npm packages with npms.io",
+    "Author": "roose",
+    "Version": "0.1.0",
+    "Language": "executable",
+    "Website": "https://github.com/roose/wox-npms-search",
+    "IcoPath": "Images\\npms.png",
+    "ExecuteFileName": "npms.exe"
+}
