@@ -43,21 +43,6 @@ proc query(wp: Wox, params: varargs[string]) =
 
   let packages = wp.loadCache(params)
   for package in packages["results"]:
-    # let p = package["package"]
-    # var flags = ""
-    # if package.hasKey("flags"):
-      # flags = " ["& join(lc[ y.key | ( y <- package["flags"].pairs ), string ], ", ") & "]"
-
-    # if p["description"].getStr.contains("\n")
-
-    # let
-      # name = p["name"].getStr
-      # version = p["version"].getStr
-      # username = p["publisher"]["username"].getStr
-      # links = p["links"]
-      # title = name & " v" & version & " by " & username & flags
-      # desc  = if p["description"].getStr.contains("\n"): join(p["description"].getStr.split(), " ") else: p["description"].getStr
-      # url   = if links.hasKey("repository"): links["repository"].getStr else: links["npm"].getStr
     let (title, desc, url) = parsePackage(package)
     wp.add(title, desc, ico, "openUrl", url, false)
 
