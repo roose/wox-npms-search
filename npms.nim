@@ -9,7 +9,7 @@ proc parsePackage(n: JsonNode): tuple[title, desc, url: string] =
     username = p["publisher"]["username"].getStr
     links = p["links"]
   var
-    url, flags = ""
+    desc, url, flags = ""
 
   if n.hasKey("flags"):
     flags = " [" & join(lc[ y.key | ( y <- n["flags"].pairs ), string ], ", ") & "]"
@@ -19,8 +19,11 @@ proc parsePackage(n: JsonNode): tuple[title, desc, url: string] =
   else:
     url = links["npm"].getStr
 
-  let
+  if p.hasKey("description"):
     desc =join(p["description"].getStr.split(), " ")
+
+  let
+    # desc =join(p["description"].getStr.split(), " ")
     title = name & " v" & version & " by " & username & flags
 
   return (title, desc, url)
