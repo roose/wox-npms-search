@@ -1,5 +1,5 @@
 import os, strutils, httpclient, json, browsers, cgi, future
-import wox
+import "../../code/nim-wox/src/wox"
 
 proc parsePackage(n: JsonNode): tuple[title, desc, url: string] =
   let
@@ -12,7 +12,10 @@ proc parsePackage(n: JsonNode): tuple[title, desc, url: string] =
     desc, url, flags = ""
 
   if n.hasKey("flags"):
-    flags = " [" & join(lc[ y.key | ( y <- n["flags"].pairs ), string ], ", ") & "]"
+    var flagsKeys: seq[string]
+    for key in n["flags"].pairs:
+      flagsKeys.add(key.key)
+    flags = " [" & join(flagsKeys, ", ") & "]"
 
   if links.hasKey("repository"):
     url = links["repository"].getStr
@@ -40,7 +43,8 @@ proc query(wp: Wox, params: varargs[string]) =
 
   if isCacheOld(params, 1*24*60*60):
     let
-      content = getContent(url & params)
+      client = newHttpClient()
+      content = client.getContent(url & params)
       data    = parseJson(content)
     wp.saveCache(params, data)
 
