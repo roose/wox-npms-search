@@ -10,3 +10,7 @@ Download latest plugin(\*.wox/\*.flowlauncher file) from [releases](https://gith
 ## Screenshot
 
 ![example](https://habrastorage.org/files/6cf/ccd/643/6cfccd643a1243558dea491883837d93.png)
+
+### Context menu(<kbd>Shift</kbd>+<kbd>Enter</kbd>):
+
+![demo](data/demo.png)
