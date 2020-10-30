@@ -38,9 +38,9 @@ proc parsePackage(n: JsonNode): Package =
     p = n["package"]
     name = p["name"].getStr
     version = p["version"].getStr
-    username = p["publisher"]["username"].getStr
     links = p["links"]
   var
+    username = if p.hasKey("publisher"): p["publisher"]["username"].getStr else: ""
     desc, url, npm, flags = ""
 
   if n.hasKey("flags"):
@@ -59,9 +59,11 @@ proc parsePackage(n: JsonNode): Package =
   if p.hasKey("description"):
     desc =join(p["description"].getStr.split(), " ")
 
+  if username.len != 0: username = "" else: username = " by " & username
+
   let
     # desc =join(p["description"].getStr.split(), " ")
-    title = name & " v" & version & " by " & username & flags
+    title = name & " v" & version & username & flags
 
   return Package(name: name, title: title, desc: desc, github: url, npm: npm)
 
