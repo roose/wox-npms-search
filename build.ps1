@@ -1,4 +1,4 @@
-nim c -d:release --opt:size --passL:-s npms.nim
+nim c -d:release --opt:size --passL:-s -d:ssl npms.nim
 
 # get version from plugin.json
 $version = (Get-Content plugin.json | ConvertFrom-Json).version

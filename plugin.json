@@ -6,7 +6,7 @@
     "Name": "npms search",
     "Description": "Search for npm packages with npms.io",
     "Author": "roose",
-    "Version": "1.0.1",
+    "Version": "1.0.2",
     "Language": "executable",
     "Website": "https://github.com/roose/wox-npms-search",
     "IcoPath": "Images\\npms.png",
